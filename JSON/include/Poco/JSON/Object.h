@@ -141,6 +141,15 @@ public:
 	}
 
 	template<typename T>
+	void copyValue(T& t, const std::string& key)
+	/// copyValue is like getValue
+	/// The difference is that it can be directly assigned to t
+	/// Note: This will not work for an array or an object.
+	{
+		t = this->get(key).convert<T>();
+	}
+
+	template<typename T>
 	Poco::Nullable<T> getNullableValue(const std::string& key) const
 		/// Retrieves the property with the given name and will
 		/// try to convert the value to the given template type.
